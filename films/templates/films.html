@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    <input onfocus="this.value=''" hx-swap="outerhtml" hx-post="/check_title/" hx-trigger="keyup"
+        hx-target="#title-error" id="title" type="text" name='title'>
+    <div class="" id="title-error">
+    </div>
+    <button id="btn" hx-post="{% url 'add-film' %}" hx-target="#film-list" type="submit">Dodaj</button>
+</form>
+
+<section id="film-list">
+    {% include 'partials/list-film.html' %}
+</section>
+
+{% endblock content %}

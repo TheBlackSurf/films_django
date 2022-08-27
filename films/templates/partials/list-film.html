@@ -1,0 +1,28 @@
+{% if films %}
+
+<section class="sortable">
+    <div class="htmx-indicator">Updating...</div>
+    {% for film in films  %}
+
+    {% if film.completed == False %}
+    <h3 style="cursor:pointer; color:green;" hx-post="{% url 'change_status' film.id %}" hx-target="#film-list">
+        {{film.title}}
+        <span style="font-size:10px; color:black; margin-top:-20px;">Do obejrzenia</span>
+    </h3>
+
+    {% else %}
+    <h3 style="cursor:pointer; color:red;" hx-post="{% url 'change_status' film.id %}" hx-target="#film-list">
+
+        <s>{{film.title}} </s><span style="font-size:10px; color:black; margin-top:-20px;">Obejrzane</span>
+    </h3>
+
+    {% endif %}
+
+    <span style="cursor: pointer; " hx-delete="{% url 'delete-film' film.id %}" hx-target="#film-list">X</span>
+
+
+    {% endfor %}
+</section>
+{% else %}
+<p>Brak Filmów</p>
+{% endif %}

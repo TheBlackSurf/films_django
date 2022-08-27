@@ -1,0 +1,7 @@
+<form action="" method="post">
+    {% csrf_token %}
+    <label for="">Search</label>
+    <input name="search" type="text" hx-post="{% url 'search-film' %}" hx-trigger="keyup" hx-target='#result'>
+</form>
+
+<div id="result"></div>

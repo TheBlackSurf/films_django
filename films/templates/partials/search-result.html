@@ -1,0 +1,8 @@
+{% if films %}
+{% for film in films  %}
+{{film.title}}
+=================
+{% endfor %}
+{% else %}
+<p>Brak Filmów</p>
+{% endif %}
